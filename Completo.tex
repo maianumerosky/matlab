@@ -1,0 +1,200 @@
+% NOTA: las lineas que comienzan con % son comentarios, se ignoran por el compilador de latex
+
+\title{Ejemplo de todo un poco}
+\author{Taller de latex por alumnos del df (FIFA)}
+\date{\today}
+
+\documentclass[11pt,a4paper]{article} %tamaño predeterminado de la letra: 11.
+
+\usepackage{graphicx}  % Esto es necesario para ver el grafico de la mandarina, COMENTARLO si no compila
+
+
+\newtheorem{godel}{Teorema}
+
+% documentclass determina algunos parametros generales del documento. En primer lugar se determina el tamanio de letra, en este caso, 11pt (10pt por default). Ademas se determina el tipo de hoja en el cual queremos acomodar lo que escribimos, en este caso, a4. Podemos agregar otras opciones como por ejemplo twocolumn si deseamos un documento en 2 columnas. Finalmente determinamos el tipo de documento que queremos generar (article para articulos, report para reportes, book para libros etc etc) 
+
+
+\pagestyle{plain}  % determina donde queremos la numeracion de la pagina (o si la queremos) etc. Las opciones basicas son : plain, headings, empty
+
+
+\usepackage[spanish]{babel}   % para trabajar en castellano necesitamos este paquete, hay que descomentar esto y chequear que este instalado.
+\usepackage[utf8]{inputenc}   % para poder escribir tildes normalmente (eg. poner á y no \'a), hay que descomentar esto y chequear que este instalado. si les manda problema por el utf8, cambienlo a latin1
+\usepackage[T1]{fontenc}      % con inputenc supuestamente ya basta para escribir en español, pero creo que si de pronto mandan al en, por ejemplo, aleman, van a necesitar esto. Si lo tienen instalado usenlo, es una de esas supuesta 'buenas practicas'
+
+
+\usepackage{multirow} %paquete para poder fusionar columnas y filas en tablas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}  % \begin{document} declara un ``ambiente''  o environment. En este caso, el environment declarado es el documento mismo
+
+
+\maketitle %este activa el t\`itulo, fecha, etc, de arriba de todo, en el lugar elegido.
+\clearpage
+
+\tableofcontents  %lo ponemos para trabajo largos que necesiten indice
+\clearpage
+
+Vamos a introducir algunos conceptos muy b\'asicos sobre como estructurar el texto. En \LaTeX{} , si queremos pasar a un nuevo p\'arrafo, dejamos una linea en blanco.
+
+Podemos querer trabajar con texto centrado, con alineamiento izquierdo o alineamiento derecho. \footnote{El texto es un fragmento de \textit{The Hollow Men}, de T.S. Eliot} % vemos aqui como colocar notas al pie de pagina. Ademas, vemos como generar texto en formato italica usando \emph
+
+\begin{center}
+This is the way the world ends \\ % Aqui ponemos \\ para forzar a comenzar una nueva linea. Como queda si no lo pongo?
+This is the way the world ends \\
+This is the way the world ends \\
+Not with a bang but a whimper. 
+\end{center}
+
+\begin{flushright}
+ This is the way the world ends \\ 
+This is the way the world ends \\
+This is the way the world ends \\
+Not with a bang but a whimper. 
+\end{flushright}
+
+\begin{flushleft}
+This is the way the world ends \\ 
+This is the way the world ends \\ 
+This is the way the world ends \\
+Not with a bang but a whimper. 
+\end{flushleft}
+
+En \LaTeX{}  hay \textit{environments} para muchas cosas, en particular, hasta hay un \textit{environment} para poesia (verse). Otros  \textit{environments} muy \'utiles son itemize,
+
+\begin{itemize}
+ \item papas
+ \item zanahorias
+ \item manzana
+\end{itemize}
+
+\ldots y enumerate   % \ldots pone puntos suspensivos!
+
+\begin{enumerate}
+ \item cobayo
+ \item hamster
+ \item conejo
+\end{enumerate}
+
+ 
+
+Normalmente el \LaTeX{} se encarga de ajustar espacios autom\'aticamente para que el texto se vea bien en la p\'agina. Pero si queremos insertar nuestros propios espacios verticales
+
+\vspace{10mm}
+
+usamos vspace, y si queremos instertar espacios horizontales \hspace{5mm} usamos hspace.
+
+
+\section{Secci\'on}
+
+Podemos organizar nuestro art\'iculo en secciones. M\'as a\'un, podemos hacerlo en subsecciones
+
+\subsection{Subsecci\'on}
+
+Y podemos hacerlo en subsubsecciones!
+
+\subsubsection{Subsubsecci\'on}
+
+
+La numeraci\'on es clara y del tipo \#secci\'on.\#subsecci\'on.\#subsubsecci\'on. Adem\'as, el tama\~no de letra se va haciendo m\'as chico a medida que descendemos de categor\'ia.
+
+\vspace{5mm}
+
+Podemos\begin{large} cambiar el \end{large} \begin{Large}tama\~no de                                           \end{Large} \begin{LARGE}la letra \end{LARGE} \begin{huge}a voluntad!  \end{huge} \begin{footnotesize}(y todav\'ia podemos hacerla m\'as grande)                                                                             \end{footnotesize}
+
+\vspace{5mm}
+
+Tenemos una moderada diposici\'on de \textit{fonts}, \texttt{como este}, o bien \textsf{sans serif} o algun \textsc{otro m\'as}.
+
+\vspace{5mm}
+
+Tarde o temprano vamos a querer insertar figuras. Hay un gran repertorio de posibilidades para insertar figuras, pero lo m\'as b\'asico es lo siguiente:
+
+\begin{figure}[h]%h es de here, te lo fija en ese lugar.
+\centering
+\includegraphics[totalheight=0.22\textheight]{mandarina.jpg}   %0.22\texthigh te pone la imagen en un 0.22 veces el tamaño de la p\´agina% esto solo compila si hay un archivo llamado mandarina.jpg en el directorio donde esta el .tex!!
+\caption{\small  Esta es una figura de ejemplo }
+\label{mandarina}
+\end{figure}
+%OJO con las extensiones de los archivos. jpg desigual JPG
+%Cuenta la leyenda que no hace falta poner las extensiones, pero requiere mayores corroboraciones experimentales.
+Una vez que creamos una figura, podemos referenciarla (como vemos en la figura \ref{mandarina}, las mandarinas se parecen a las naranjas). Una ventaja del \LaTeX{} es que si agregamos nuevas figuras o cambiamos el orden, la numeraci\'on se arregla sola.
+
+Ahora ya sabemos bastante sobre como escribir y poner figuras. Vamos a hacer algo de matem\'atica
+
+\clearpage  % empezamos una nueva p\'agina!
+
+\section{Matem\'atica en \LaTeX{} }
+
+El \LaTeX proporciona un medio superior para escribir matem\'atica. Podemos querer escribir matem\'atica dentro de un p\'arrafo ($e=mc^{2}$) o bien equivalentemente, \begin{math} e = mc^{2} \end{math}. Por otra parte, podemos querer darle un rol un poco m\'as ``central'' a nuestra ecuaci\'on,
+
+\begin{displaymath}
+4345^{4} + 345^{4^2} = 5321^{4}
+\end{displaymath}
+
+$$4345^{\sqrt[3]{2}}$$ %poner $$ parece ser como el displaymath
+
+En muchos casos queremos tener nuestras ecuaciones numeradas para referenciarlas luego,
+
+\begin{equation} \label{ecuacion}
+\sum _{n=1}^{\infty} \frac{1}{n^{2}} = \frac{\pi^{2}}{6}
+\end{equation}
+
+Entonces, podemos venir y decir (\ldots de acuerdo a la ecuacion \ref{ecuacion} \ldots).
+
+La producci\'on de matem\'atica con \LaTeX{} es un asunto muy vasto. El usuario que quiera profundizar terminar\'a irremediablemente enganchado generando expresiones bellas para la matem\'atica que necesite escribir. 
+
+Por \'ultimo, para los m\'as matem\'aticos, podemos crear teoremas, definiciones, demostraciones, y referenciarlos.
+
+\begin{godel}[Incompletitud de G\"odel]
+Toda teor\'ia formal recursiva que contenga la aritm\'etica elemental no puede ser consistente y completa a la vez. En part\'icular, si es una toer\'ia consistente, existe un enunciado verdadero pero indemostrable dentro de la teor\'ia.
+\end{godel}
+
+\begin{godel}
+La propiedad de completitud de una teor\'ia no es enunciable dentro de la misma teor\'ia.
+\end{godel}
+
+\clearpage
+
+\section{Tablas}
+
+El \LaTeX{} tambi\'en permite escribir tablas, aunque son un tanto complicadas. Algunos editores proporcionan m\'etodos con una interf\'az gr\'afica m\'as simple. Estos consisten simplemente en rellenar una tabla base y el editor se encarga de traducirlo al c\'odigo. A continuaci\'on presentamos dos ejemplos de distinta dificultad.
+\vspace{5mm}
+
+\begin{center} %para centrar
+\begin{tabular}{ l | c || r } %para empezar la tabla, l(izquierda), c(centrar), r(derecha) son para decir la cantidad de columnas y si el texto estara centrado o corrido hacia algun lado. Las lineas verticales indican el tipo de separacion entre columnas.
+  \hline  %para poner la linea horizontal
+  1 & 2 & 3 \\ %& sirve para separar celdas consecutivas y el \\ sirve para saltar a la fila de abajo
+  4 & 5 & 6 \\
+  7 & 8 & 9 \\
+  \hline  
+\end{tabular}
+\end{center}
+
+\vspace{5mm}
+
+\begin{center}
+\begin{tabular}{ |l|l|l| }
+\hline
+\multicolumn{3}{ |c| }{Team sheet} \\ %multi es para fusionar columnas (multicolumn) o filas (multirow), seguido de la cantidad de filas o columnas entre llaves. A continuacion, para el caso de las columnas se indica la alinieacion y, para el caso de las filas, se indica el ancho. Finalmente, y entre llaves, se indica el contenido.
+\hline
+Goalkeeper & GK & Paul Robinson \\ \hline
+\multirow{4}{*}{Defenders} & LB & Lucus Radebe \\
+ & DC & Michael Duberry \\
+ & DC & Dominic Matteo \\
+ & RB & Didier Domi \\ \hline
+\multirow{3}{*}{Midfielders} & MC & David Batty \\
+ & MC & Eirik Bakke \\
+ & MC & Jody Morris \\ \hline
+Forward & FW & Jamie McMaster \\ \hline
+\multirow{2}{*}{Strikers} & ST & Alan Smith \\
+ & ST & Mark Viduka \\
+\hline
+\end{tabular}
+\end{center}
+%que pasara si vamos sacando distintas lineas?
+
+Estas tablas se pueden referenciar de la misma forma que las im\'agenes
+\end{document}    % cada vez que abrimos un environment, debemos cerrarlo.
+
+
